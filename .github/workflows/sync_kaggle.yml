@@ -30,7 +30,7 @@ jobs:
       - name: Download Notebook from Kaggle
         run: |
           set -x  # Enable debugging
-          kaggle kernels pull avayaaggarwal27/bitcoin-algo-trading-model -p . --metadata --quiet
+          kaggle kernels pull avayaaggarwal27/bitcoin-algo-trading-model -p .
 
           
       - name: Commit & Push Changes
