@@ -34,11 +34,14 @@ jobs:
 
           
       - name: Commit & Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions@github.com"
           TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M:%S")
           git add .
           git commit -m "Sync Kaggle Notebook - $TIMESTAMP" || exit 0
-          git push origin main
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
+
           
