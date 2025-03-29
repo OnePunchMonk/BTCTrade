@@ -1,0 +1,40 @@
+name: Sync Kaggle Notebook
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
+  workflow_dispatch:  # Allows manual execution
+
+jobs:
+  sync-kaggle:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Kaggle API
+        run: pip install kaggle
+
+      - name: Configure Kaggle API
+        run: |
+          mkdir -p ~/.kaggle
+          echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > ~/.kaggle/kaggle.json
+          chmod 600 ~/.kaggle/kaggle.json
+
+      - name: Download Notebook from Kaggle
+        run: kaggle kernels pull YourKaggleUsername/YourNotebook -p . --metadata --force
+
+      - name: Commit & Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@github.com"
+          TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M:%S")
+          git add .
+          git commit -m "Sync Kaggle Notebook - $TIMESTAMP" || exit 0
+          git push origin main
