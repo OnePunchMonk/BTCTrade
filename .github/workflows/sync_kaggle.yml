@@ -33,7 +33,7 @@ jobs:
           kaggle kernels pull avayaaggarwal27/bitcoin-algo-trading-model -p .
 
           
-            - name: Commit & Push Changes
+      - name: Commit & Push Changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
