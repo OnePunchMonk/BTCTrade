@@ -28,7 +28,7 @@ jobs:
           chmod 600 ~/.kaggle/kaggle.json
 
       - name: Download Notebook from Kaggle
-        run: kaggle kernels pull YourKaggleUsername/YourNotebook -p . --metadata --force
+        run: kaggle kernels pull avayaaggarwal27/bitcoin-algo-trading-model -p . --metadata --force
 
       - name: Commit & Push Changes
         run: |
