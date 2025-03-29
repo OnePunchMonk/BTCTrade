@@ -28,8 +28,11 @@ jobs:
           chmod 600 ~/.kaggle/kaggle.json
 
       - name: Download Notebook from Kaggle
-        run: kaggle kernels pull avayaaggarwal27/bitcoin-algo-trading-model -p . --metadata --force
+        run: |
+          set -x  # Enable debugging
+          kaggle kernels pull avayaaggarwal27/bitcoin-algo-trading-model -p . --metadata --force
 
+          
       - name: Commit & Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
@@ -38,3 +41,4 @@ jobs:
           git add .
           git commit -m "Sync Kaggle Notebook - $TIMESTAMP" || exit 0
           git push origin main
+          
