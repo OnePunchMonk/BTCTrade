@@ -1,7 +1,7 @@
 # Bitcoin Algorithmic Trading Model
 
 ## Overview
-This project implements a backtesting framework for an algorithmic trading model focused on Bitcoin (BTC). The backtesting period spans from **January 1, 2015, to December 31, 2017**. The model utilizes historical BTC price data to test the effectiveness of a trading strategy.
+This project implements a framework for an algorithmic trading model focused on Bitcoin (BTC). The backtesting period spans from **January 1, 2015, to December 31, 2017**. The model utilizes historical BTC price data to test the effectiveness of a trading strategy.
 
 ## Features
 - 📈 Uses historical Bitcoin price data at a **15-minute interval**.
