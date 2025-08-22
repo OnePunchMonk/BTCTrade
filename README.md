@@ -14,8 +14,8 @@ To set up the environment and run the project, follow these steps:
 
 ### 1️⃣ Clone the repository:
 ```sh
-git clone https://github.com/your-username/bitcoin-algo-trading.git
-cd bitcoin-algo-trading
+git clone https://github.com/onepunchmonk/btctrade.git
+cd btctrade
 ```
 
 ### 2️⃣ Install dependencies:
